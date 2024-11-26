@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Admin;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash; // For hashing the password
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,17 +14,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        // Define admin data
         $admin = [
             'name' => 'Admin',
             'email' => 'admin@admin.com',
-          ];
+            'password' => Hash::make('password'), // Hash the password
+        ];
 
-        Admin::factory()->updateOrCreate($admin, $admin);
+        // Ensure admin user is created or updated
+        Admin::updateOrCreate(
+            ['email' => $admin['email']], // Matching criteria
+            $admin // Data to create or update
+        );
     }
 }
