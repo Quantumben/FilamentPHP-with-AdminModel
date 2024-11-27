@@ -14,17 +14,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Define admin data
-        $admin = [
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('password'), // Hash the password
-        ];
+        // // Define admin data
+        // $admin = [
+        //     'name' => 'Admin',
+        //     'email' => 'admin@admin.com',
+        //     'password' => Hash::make('password'), // Hash the password
+        // ];
 
-        // Ensure admin user is created or updated
-        Admin::updateOrCreate(
-            ['email' => $admin['email']], // Matching criteria
-            $admin // Data to create or update
-        );
+        // // Ensure admin user is created or updated
+        // Admin::updateOrCreate(
+        //     ['email' => $admin['email']], // Matching criteria
+        //     $admin // Data to create or update
+        // );
+
+        Admin::updateOrCreate([
+            'name' => 'Admin',
+            'email' => 'admin@example.com',
+            'password' => Hash::make('password'),
+        ]);
     }
 }

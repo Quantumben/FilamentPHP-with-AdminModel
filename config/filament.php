@@ -86,5 +86,7 @@ return [
 
     'livewire_loading_delay' => 'default',
 
-
+    'auth' => [
+        'guard' => 'admin', // Use the "admin" guard
+    ],
 ];
